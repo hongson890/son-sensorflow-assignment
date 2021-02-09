@@ -42,7 +42,10 @@
     "react/require-default-props": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "import/extensions": "off",
+    "prettier/prettier": ["warn"],
+    "react/jsx-fragments": "off"
   },
   "overrides": [
     {
