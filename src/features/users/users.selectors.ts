@@ -1,3 +1,5 @@
-import { RootState } from './users.types'
+interface RootState {
+  users: []
+}
 
-export const getUsersValue = (state: RootState) => state.users
+export const getUsers = (state: RootState) => state.users

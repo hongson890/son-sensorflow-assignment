@@ -13,6 +13,7 @@
     "jest": true
   },
   "rules": {
+    "allowPattern": 0,
     "max-len": "off",
     "linebreak-style": 0,
     "no-underscore-dangle": "off",
@@ -45,7 +46,9 @@
     "no-use-before-define": "off",
     "import/extensions": "off",
     "prettier/prettier": ["warn"],
-    "react/jsx-fragments": "off"
+    "react/jsx-fragments": "off",
+    "require-yield": "off",
+    "@typescript-eslint/no-use-before-define": "off"
   },
   "overrides": [
     {
