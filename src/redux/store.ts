@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { createLogger } from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import { UserReducer } from '../features/users'
-import rootSaga from './rootSaga'
+import rootSaga from './root.saga'
 
 const rootReducer = combineReducers({
   users: UserReducer,

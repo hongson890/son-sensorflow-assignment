@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export const searchUsers = (): Promise<Array<any>> => {
-  const promise = new Promise<Array<any>>((resolve) => {
+export const searchUsers = (page: number, result: number): Promise<any> => {
+  const promise = new Promise<any>((resolve) => {
     axios
-      .get(`https://randomuser.me/api/?page=3&results=10`)
+      .get(`https://randomuser.me/api/?page=${page}&results=${result}`)
       .then((res) => {
         const users = res.data.results
         resolve(users)
@@ -12,3 +12,4 @@ export const searchUsers = (): Promise<Array<any>> => {
   })
   return promise
 }
+export const searchUsers1 = (page: number, result: number) => fetch(`https://randomuser.me/api/?page=${page}&results=${result}`);

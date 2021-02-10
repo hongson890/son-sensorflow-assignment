@@ -1,7 +1,51 @@
+import MaterialTable from 'material-table'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectors } from '../features/users'
 import { searchUser } from '../features/users/users.actions'
+
+const columns = [
+  {
+    title: 'Full Name',
+    field: 'fullname',
+    render: (rowData: any) => {
+      return `${rowData.name.title} ${rowData.name.first} ${rowData.name.last}`
+    },
+  },
+  {
+    title: 'Username',
+    field: 'username',
+    render: (rowData: any) => {
+      return `${rowData.login.username}`
+    },
+  },
+  {
+    title: 'Thumbnail Icon',
+    field: 'thumbnailIcon',
+    render: (rowData: any) => {
+      return (
+        <img
+          alt={rowData.email}
+          src={rowData.picture.thumbnail}
+          style={{ width: 50, borderRadius: '50%' }}
+        />
+      )
+    },
+  },
+]
+
+const options = {
+  search: false,
+  pageSizeOptions: [10, 20, 50, 100],
+  pageSize: 10,
+  paging: true,
+  filtering: false,
+  exportButton: false,
+  headerStyle: {
+    backgroundColor: '#01579b',
+    color: '#FFF',
+  },
+}
 
 export const Home: React.FC = () => {
   const users = useSelector(selectors.getUsers)
@@ -23,6 +67,12 @@ export const Home: React.FC = () => {
           search
         </button>
       </div>
+      <MaterialTable
+        title="User Details"
+        data={users}
+        columns={columns}
+        options={options}
+      />
     </>
   )
 }

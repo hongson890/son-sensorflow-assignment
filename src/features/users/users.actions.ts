@@ -1,12 +1,11 @@
 import { SEARCH_USER, SEARCH_USER_SUCCESS } from './users.constants'
-import { BaseAction } from '../../common/base.action'
+import { UsersActionType } from './users.types'
 
-export const searchUser = (): BaseAction => ({
+export const searchUser = (): UsersActionType => ({
   type: SEARCH_USER,
-  payload: null,
 })
 
-export const searchUserSuccess = (users: any[]): BaseAction => ({
+export const searchUserSuccess = (users: any[]): UsersActionType => ({
   type: SEARCH_USER_SUCCESS,
   payload: users,
 })
