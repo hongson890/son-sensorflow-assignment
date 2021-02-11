@@ -1,9 +1,12 @@
 import { SEARCH_USER, SEARCH_USER_SUCCESS } from './users.constants'
 
-interface SearchUserAction {
-  type: typeof SEARCH_USER
+export interface SearchUserAction {
+  type: typeof SEARCH_USER,
+  page: number,
+  results: number,
+  seed: string
 }
-interface SearchUserSuccessAction {
+export interface SearchUserSuccessAction {
   type: typeof SEARCH_USER_SUCCESS
   payload: any
 }
@@ -13,6 +16,7 @@ export interface UsersState {
   users: {
     userList: any[]
     page: number
-    result: number
+    results: number
+    seed: string
   }
 }
