@@ -49,6 +49,10 @@ const options = {
 
 export const Home: React.FC = () => {
   const users = useSelector(selectors.getUsers)
+  const page = useSelector(selectors.getPage)
+  const results = useSelector(selectors.getResults)
+  const seed = useSelector(selectors.getSeed)
+  const totalCount =100
   const dispatch = useDispatch()
   return (
     <>
@@ -62,14 +66,16 @@ export const Home: React.FC = () => {
           className="waves-effect waves-teal btn-flat blue"
           type="button"
           data-qa="decrement-counter"
-          onClick={() => dispatch(searchUser())}
+          onClick={() => dispatch(searchUser(page, results, seed))}
         >
           search
         </button>
       </div>
       <MaterialTable
         title="User Details"
+        totalCount={totalCount}
         data={users}
+        page={page - 1}
         columns={columns}
         options={options}
       />
