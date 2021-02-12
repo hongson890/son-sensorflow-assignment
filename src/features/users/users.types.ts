@@ -44,7 +44,7 @@ export interface UsersState {
     page: number
     results: number
     seed: string
-    orderBy: 'fullName'
-    orderDirection: 'asc'
+    orderBy: string
+    orderDirection: string
   }
 }
