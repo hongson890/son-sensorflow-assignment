@@ -86,11 +86,18 @@ export const UserList: React.FC = () => {
           updateOrder(orderBy, orderDirection)
         }}
         onChangePage={(pageIndex, pageSize) =>
-          dispatch(searchUser(pageIndex + 1, pageSize, seed))
+            searchUsers(pageIndex, pageSize)
         }
       />
     </div>
   );
+
+  function searchUsers(pageIndex: number, pageSize: number) {
+    if (!isLoading) {
+      dispatch(searchUser(pageIndex + 1, pageSize, seed))
+    }
+  }
+
 
   function updateOrder(orderBy : number, orderDirection: string) {
     dispatch(updateLoading(true))

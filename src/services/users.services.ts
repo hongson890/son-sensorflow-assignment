@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL } from "../config/api";
 
 export class UsersServices {
   static fetchUsersFromAPI = (
@@ -6,10 +7,10 @@ export class UsersServices {
     results: number,
     seed: string,
   ): Promise<any> => {
-    const promise = new Promise<any>((resolve) => {
+    return new Promise<any>((resolve) => {
       axios
         .get(
-          `https://randomuser.me/api/?page=${page}&results=${results}&seed=${seed}`,
+          `${API_URL}?page=${page}&results=${results}&seed=${seed}`,
         )
         .then((res) => {
           const users = res.data.results;
@@ -17,6 +18,5 @@ export class UsersServices {
         })
         .catch((error) => console.log(error));
     });
-    return promise;
   };
 }
