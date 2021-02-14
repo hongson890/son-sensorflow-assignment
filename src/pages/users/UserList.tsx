@@ -3,7 +3,7 @@ import './UserList.css';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors } from '../../features/users';
-import { changeOrder, searchUser } from '../../features/users/users.actions';
+import { changeOrder, searchUser, updateLoading } from '../../features/users/users.actions';
 import { getFullName } from '../../features/users/users.helper';
 
 const columns = [
@@ -66,7 +66,7 @@ export const UserList: React.FC = () => {
   const results = useSelector(selectors.getResults);
   const seed = useSelector(selectors.getSeed);
   const totalCount = 100;
-  const isSearching = useSelector(selectors.isLoading);
+  let isLoading = useSelector(selectors.isLoading);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -81,16 +81,31 @@ export const UserList: React.FC = () => {
         page={page - 1}
         columns={columns}
         options={options}
-        isLoading={isSearching}
+        isLoading={isLoading}
         onOrderChange={(orderBy, orderDirection) => {
-          if (orderBy >= 0 && orderDirection) {
-            dispatch(changeOrder(columns[orderBy].field, orderDirection));
-          }
+          updateOrder(orderBy, orderDirection)
         }}
         onChangePage={(pageIndex, pageSize) =>
-          dispatch(searchUser(pageIndex + 1, pageSize, seed))
+            searchUsers(pageIndex, pageSize)
         }
       />
     </div>
   );
+
+  function searchUsers(pageIndex: number, pageSize: number) {
+    if (!isLoading) {
+      dispatch(searchUser(pageIndex + 1, pageSize, seed))
+    }
+  }
+
+
+  function updateOrder(orderBy : number, orderDirection: string) {
+    dispatch(updateLoading(true))
+    setTimeout(() => {
+      if (orderBy >= 0 && orderDirection && !isLoading) {
+        dispatch(changeOrder(columns[orderBy].field, orderDirection));
+        dispatch(updateLoading(false))
+      }
+    }, 500);
+  }
 };

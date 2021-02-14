@@ -21,7 +21,7 @@ function dynamicSort(property: string) {
     sortOrder = -1;
     property = property.substr(1);
   }
-  return function (a: any, b: any) {
+  return (a: any, b: any) => {
     if (property === 'fullName') {
       // eslint-disable-next-line no-nested-ternary
       let result = 0;
