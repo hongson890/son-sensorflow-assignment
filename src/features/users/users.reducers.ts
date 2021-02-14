@@ -4,9 +4,9 @@ import {
   SEARCH_USER_ERROR,
   SEARCH_USER_SUCCESS,
   UPDATE_LOADING,
-} from './users.constants'
-import { UsersActionType } from './users.types'
-import { sortUserList } from './users.helper'
+} from './users.constants';
+import { UsersActionType } from './users.types';
+import { sortUserList } from './users.helper';
 
 const emptyUserList: any[] = [];
 export const initialState = {
@@ -19,9 +19,12 @@ export const initialState = {
   seed: 'sontest',
   orderBy: 'fullName',
   orderDirection: 'asc',
-}
+};
 
-export const usersReducers = (state = initialState, action: UsersActionType) => {
+export const usersReducers = (
+  state = initialState,
+  action: UsersActionType,
+) => {
   switch (action.type) {
     case SEARCH_USER:
       return {
@@ -29,7 +32,7 @@ export const usersReducers = (state = initialState, action: UsersActionType) => 
         isLoading: true,
         page: action.page,
         results: action.results,
-      }
+      };
     case SEARCH_USER_SUCCESS:
       return {
         ...state,
@@ -39,17 +42,17 @@ export const usersReducers = (state = initialState, action: UsersActionType) => 
         userList: sortUserList(
           action.usersList,
           state.orderBy,
-          state.orderDirection
+          state.orderDirection,
         ),
-      }
+      };
     case SEARCH_USER_ERROR:
       return {
         ...state,
         userList: [],
         isLoading: false,
         isError: true,
-        message: action.message
-      }
+        message: action.message,
+      };
     case SEARCH_USER_CHANGE_ORDER:
       return {
         ...state,
@@ -58,15 +61,15 @@ export const usersReducers = (state = initialState, action: UsersActionType) => 
         userList: sortUserList(
           state.userList,
           action.orderBy,
-          action.orderDirection
+          action.orderDirection,
         ),
-      }
+      };
     case UPDATE_LOADING:
       return {
         ...state,
         isLoading: action.isLoading,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
