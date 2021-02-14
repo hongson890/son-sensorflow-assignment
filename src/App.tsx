@@ -1,14 +1,14 @@
 import React from 'react'
 import './App.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { UserList } from './pages/users/UserList'
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="container">
         <Switch>
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={UserList} exact />
         </Switch>
       </div>
     </BrowserRouter>

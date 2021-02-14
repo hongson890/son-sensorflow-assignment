@@ -6,19 +6,13 @@ export function sortUserList(
   orderBy: string,
   orderDirection: string
 ) {
-  console.log('start sortUserList')
-  console.log(users)
   const myClonedArray = cloneDeep(users)
   if (!orderBy || !orderDirection) {
     return myClonedArray
   }
-  const e =
-    orderDirection === 'asc'
+  return orderDirection === 'asc'
       ? myClonedArray.sort(dynamicSort(orderBy))
       : myClonedArray.sort(dynamicSort(`-${orderBy}`))
-  console.log('end sortUserList')
-  console.log(e)
-  return e
 }
 
 function dynamicSort(property: string) {
@@ -56,6 +50,5 @@ function dynamicSort(property: string) {
 }
 
 export function getFullName(user: any): string {
-  const i = `${user.name.title} ${user.name.first} ${user.name.last}`
-  return i
+  return `${user.name.title} ${user.name.first} ${user.name.last}`
 }

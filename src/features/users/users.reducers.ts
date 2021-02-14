@@ -8,9 +8,12 @@ import {
 import { UsersActionType } from './users.types'
 import { sortUserList } from './users.helper'
 
-const initialState = {
+const emptyUserList: any[] = [];
+export const initialState = {
   isLoading: false,
-  userList: [],
+  isError: false,
+  message: '',
+  userList: emptyUserList,
   page: 1,
   results: 10,
   seed: 'sontest',
@@ -18,7 +21,7 @@ const initialState = {
   orderDirection: 'asc',
 }
 
-export default (state = initialState, action: UsersActionType) => {
+export const usersReducers = (state = initialState, action: UsersActionType) => {
   switch (action.type) {
     case SEARCH_USER:
       return {
@@ -26,14 +29,15 @@ export default (state = initialState, action: UsersActionType) => {
         isLoading: true,
         page: action.page,
         results: action.results,
-        seed: action.seed,
       }
     case SEARCH_USER_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        isError: false,
+        message: '',
         userList: sortUserList(
-          action.payload,
+          action.usersList,
           state.orderBy,
           state.orderDirection
         ),
@@ -41,14 +45,16 @@ export default (state = initialState, action: UsersActionType) => {
     case SEARCH_USER_ERROR:
       return {
         ...state,
+        userList: [],
         isLoading: false,
+        isError: true,
+        message: action.message
       }
     case SEARCH_USER_CHANGE_ORDER:
       return {
         ...state,
         orderBy: action.orderBy,
         orderDirection: action.orderDirection,
-        isLoading: false,
         userList: sortUserList(
           state.userList,
           action.orderBy,

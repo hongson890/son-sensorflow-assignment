@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { searchUserSuccess } from './users.actions'
 import { SEARCH_USER } from './users.constants'
-import { searchUsers } from './users.services'
+import { UsersServices } from './users.services'
 import { SearchUserAction } from './users.types'
 
 function* requestSearchUser(payload: SearchUserAction) {
   const users = yield call(
-    searchUsers,
+      UsersServices.fetchUsersFromAPI,
     payload.page,
     payload.results,
     payload.seed
