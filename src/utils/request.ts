@@ -7,9 +7,9 @@
  */
 function parseJSON(response: any) {
   if (response.status === 204 || response.status === 205) {
-    return null
+    return null;
   }
-  return response.json()
+  return response.json();
 }
 
 /**
@@ -21,12 +21,12 @@ function parseJSON(response: any) {
  */
 function checkStatus(response: any) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   }
 
-  const error = new Error(response.statusText)
-  error.message = response
-  throw error
+  const error = new Error(response.statusText);
+  error.message = response;
+  throw error;
 }
 
 /**
@@ -38,5 +38,5 @@ function checkStatus(response: any) {
  * @return {object}           The response data
  */
 export default function request(url: string, options: any) {
-  return fetch(url, options).then(checkStatus).then(parseJSON)
+  return fetch(url, options).then(checkStatus).then(parseJSON);
 }

@@ -1,7 +1,7 @@
-import React from 'react'
-import './App.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { UserList } from './pages/users/UserList'
+import React from 'react';
+import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { UserList } from './pages/users/UserList';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const App: React.FC = () => {
         </Switch>
       </div>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;

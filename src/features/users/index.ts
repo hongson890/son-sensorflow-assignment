@@ -1,5 +1,5 @@
-import * as actionTypes from './users.constants'
-import * as selectors from './users.selectors'
+import * as actionTypes from './users.constants';
+import * as selectors from './users.selectors';
 
-export { actionTypes }
-export { selectors }
+export { actionTypes };
+export { selectors };
