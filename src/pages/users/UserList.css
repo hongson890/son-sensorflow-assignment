@@ -13,3 +13,18 @@
 .MuiTableCell-root {
     padding: 5px 0px 5px 10px !important;
 }
+.MuiTableSortLabel-root .MuiTableSortLabel-active .MuiTableSortLabel-icon {
+    color: #ffffff !important;
+}
+.MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+    color: #ffffff !important;
+}
+.MuiTableSortLabel-root.MuiTableSortLabel-active {
+    color: white !important;
+}
+.MuiTableSortLabel-root:focus {
+    color: white !important;
+}
+.MuiTableSortLabel-root:hover {
+    color: #ffffff !important;
+}
