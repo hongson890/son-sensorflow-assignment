@@ -1,6 +1,6 @@
 import {
   SEARCH_USER,
-  SEARCH_USER_CHANGE_ORDER,
+  SEARCH_USER_CHANGE_ORDER, SEARCH_USER_ERROR,
   SEARCH_USER_SUCCESS,
   UPDATE_LOADING,
 } from './users.constants'
@@ -17,9 +17,14 @@ export const searchUser = (
   seed,
 })
 
-export const searchUserSuccess = (users: any[]): UsersActionType => ({
+export const searchUserSuccess = (usersList: any[]): UsersActionType => ({
   type: SEARCH_USER_SUCCESS,
-  payload: users,
+  usersList,
+})
+
+export const searchUserError = (message: string): UsersActionType => ({
+  type: SEARCH_USER_ERROR,
+  message,
 })
 
 export const changeOrder = (

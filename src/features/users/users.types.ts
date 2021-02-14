@@ -14,11 +14,11 @@ export interface SearchUserAction {
 }
 export interface SearchUserSuccessAction {
   type: typeof SEARCH_USER_SUCCESS
-  payload: any
+  usersList: any[]
 }
 export interface SearchUserErrorAction {
   type: typeof SEARCH_USER_ERROR
-  payload: any
+  message: string
 }
 export interface SearchUserChangeOrderAction {
   type: typeof SEARCH_USER_CHANGE_ORDER

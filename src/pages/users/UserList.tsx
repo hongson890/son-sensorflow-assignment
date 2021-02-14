@@ -1,9 +1,10 @@
 import MaterialTable from 'material-table'
+import './UserList.css'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectors } from '../features/users'
-import { changeOrder, searchUser } from '../features/users/users.actions'
-import { getFullName } from '../features/users/users.helper'
+import { selectors } from '../../features/users'
+import { changeOrder, searchUser } from '../../features/users/users.actions'
+import { getFullName } from '../../features/users/users.helper'
 
 const columns = [
   {
@@ -14,14 +15,14 @@ const columns = [
       return getFullName(rowData)
     },
   },
-  {
-    title: 'Email',
-    field: 'email',
-    sorting: true,
-    render: (rowData: any) => {
-      return rowData.email
-    },
-  },
+  // {
+  //   title: 'Email',
+  //   field: 'email',
+  //   sorting: true,
+  //   render: (rowData: any) => {
+  //     return rowData.email
+  //   },
+  // },
   {
     title: 'Username',
     field: 'username',
@@ -39,7 +40,7 @@ const columns = [
         <img
           alt={rowData.email}
           src={rowData.picture.thumbnail}
-          style={{ width: 50, borderRadius: '50%' }}
+          style={{ width: 30, borderRadius: '50%' }}
         />
       )
     },
@@ -59,7 +60,7 @@ const options = {
   },
 }
 
-export const Home: React.FC = () => {
+export const UserList: React.FC = () => {
   const users = useSelector(selectors.getUsers)
   const page = useSelector(selectors.getPage)
   const results = useSelector(selectors.getResults)
@@ -68,13 +69,12 @@ export const Home: React.FC = () => {
   const isSearching = useSelector(selectors.isLoading)
 
   const dispatch = useDispatch()
-  // dispatch(searchUser(page, results, seed))
   useEffect(() => {
     console.log('I have been mounted')
     dispatch(searchUser(page, results, seed))
   }, [])
   return (
-    <>
+    <div className="listUserContainer center">
       <MaterialTable
         title="List users from api /randomuser"
         totalCount={totalCount}
@@ -92,6 +92,6 @@ export const Home: React.FC = () => {
           dispatch(searchUser(pageIndex + 1, pageSize, seed))
         }
       />
-    </>
+    </div>
   )
 }
