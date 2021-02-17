@@ -11,16 +11,12 @@ export function sortUserList(
     return myClonedArray;
   }
   return orderDirection === 'asc'
-    ? myClonedArray.sort(dynamicSort(orderBy))
-    : myClonedArray.sort(dynamicSort(`-${orderBy}`));
+    ? myClonedArray.sort(dynamicSort(orderBy, false))
+    : myClonedArray.sort(dynamicSort(orderBy, true));
 }
 
-function dynamicSort(property: string) {
-  let sortOrder = 1;
-  if (property[0] === '-') {
-    sortOrder = -1;
-    property = property.substr(1);
-  }
+function dynamicSort(property: string, isDesc?: boolean) {
+  const sortOrder = isDesc ? -1 : 1;
   return (a: any, b: any) => {
     if (property === 'fullName') {
       // eslint-disable-next-line no-nested-ternary

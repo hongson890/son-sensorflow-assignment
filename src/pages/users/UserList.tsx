@@ -102,10 +102,10 @@ export const UserList: React.FC = () => {
   function updateOrder(orderBy : number, orderDirection: string) {
     dispatch(updateLoading(true))
     setTimeout(() => {
-      if (orderBy >= 0 && orderDirection && !isLoading) {
+      if (orderBy >= 0 && orderDirection) {
         dispatch(changeOrder(columns[orderBy].field, orderDirection));
-        dispatch(updateLoading(false))
       }
+      dispatch(updateLoading(false))
     }, 500);
   }
 };
