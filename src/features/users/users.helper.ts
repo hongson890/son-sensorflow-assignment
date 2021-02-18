@@ -11,11 +11,11 @@ export function sortUserList(
     return usersClone ;
   }
   return orderDirection === 'asc'
-    ? usersClone .sort(dynamicSort(orderBy, false))
-    : usersClone .sort(dynamicSort(orderBy, true));
+    ? usersClone .sort(dynamicSortComparator(orderBy, false))
+    : usersClone .sort(dynamicSortComparator(orderBy, true));
 }
 
-function dynamicSort(property: string, isDesc?: boolean) {
+function dynamicSortComparator(property: string, isDesc?: boolean) {
   const sortOrder = isDesc ? -1 : 1;
   return (a: any, b: any) => {
     if (property === 'fullName') {
