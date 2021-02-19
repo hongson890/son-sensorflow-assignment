@@ -6,16 +6,16 @@ export function sortUserList(
   orderBy: string,
   orderDirection: string,
 ) {
-  const myClonedArray = cloneDeep(users);
+  const usersClone = cloneDeep(users);
   if (!orderBy || !orderDirection) {
-    return myClonedArray;
+    return usersClone;
   }
   return orderDirection === 'asc'
-    ? myClonedArray.sort(dynamicSort(orderBy, false))
-    : myClonedArray.sort(dynamicSort(orderBy, true));
+    ? usersClone.sort(dynamicSortComparator(orderBy, false))
+    : usersClone.sort(dynamicSortComparator(orderBy, true));
 }
 
-function dynamicSort(property: string, isDesc?: boolean) {
+function dynamicSortComparator(property: string, isDesc?: boolean) {
   const sortOrder = isDesc ? -1 : 1;
   return (a: any, b: any) => {
     if (property === 'fullName') {
