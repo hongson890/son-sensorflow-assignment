@@ -45,10 +45,10 @@
     "react/prop-types": "off",
     "no-use-before-define": "off",
     "import/extensions": "off",
-    "prettier/prettier": ["off"],
     "react/jsx-fragments": "off",
     "require-yield": "off",
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": "off",
+    "react/destructuring-assignment": "off"
   },
   "overrides": [
     {

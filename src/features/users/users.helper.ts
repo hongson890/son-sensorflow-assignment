@@ -6,13 +6,13 @@ export function sortUserList(
   orderBy: string,
   orderDirection: string,
 ) {
-  const usersClone  = cloneDeep(users);
+  const usersClone = cloneDeep(users);
   if (!orderBy || !orderDirection) {
-    return usersClone ;
+    return usersClone;
   }
   return orderDirection === 'asc'
-    ? usersClone .sort(dynamicSortComparator(orderBy, false))
-    : usersClone .sort(dynamicSortComparator(orderBy, true));
+    ? usersClone.sort(dynamicSortComparator(orderBy, false))
+    : usersClone.sort(dynamicSortComparator(orderBy, true));
 }
 
 function dynamicSortComparator(property: string, isDesc?: boolean) {
