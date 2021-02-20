@@ -44,10 +44,12 @@
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": "off",
     "no-use-before-define": "off",
+    "function-call-argument-newline": "off",
     "import/extensions": "off",
     "react/jsx-fragments": "off",
     "require-yield": "off",
     "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "react/destructuring-assignment": "off"
   },
   "overrides": [
